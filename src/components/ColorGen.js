@@ -11,7 +11,6 @@ const ColorGen = () => {
 
     try {
       setColorvalue(new Values(color).all(10));
-      //   console.log(colorValue);
     } catch {
       console.log('wtf');
     }
@@ -39,17 +38,31 @@ const ColorGen = () => {
       <section className='color-section'>
         {colorValue.map((item, index) => {
           const { hex } = item;
-          return <SingleColor key={index} hex={hex} />;
+          return <SingleColor key={index} {...item} hex={hex} />;
         })}
       </section>
     </StyledDiv>
   );
 };
 
-const SingleColor = ({ hex }) => {
+const SingleColor = ({ hex, weight }) => {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(`#${hex}`);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
+  };
+
   return (
-    <div className='single-color' style={{ backgroundColor: `#${hex}` }}>
-      #{hex}
+    <div
+      className='single-color'
+      onClick={handleCopy}
+      style={{ backgroundColor: `#${hex}` }}
+    >
+      <p>{weight}</p>
+      <p>#{hex}</p>
     </div>
   );
 };
