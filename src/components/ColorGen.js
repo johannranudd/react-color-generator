@@ -28,7 +28,7 @@ const ColorGen = () => {
         <form action='' onSubmit={handleSubmit}>
           <input
             type='text'
-            className={error && 'error'}
+            className={error ? 'error' : ''}
             placeholder='#333999'
             value={color}
             onChange={(e) => setColor(e.target.value)}
