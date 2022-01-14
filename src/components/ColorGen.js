@@ -5,14 +5,15 @@ import Values from 'values.js';
 const ColorGen = () => {
   const [color, setColor] = useState('');
   const [colorValue, setColorvalue] = useState([]);
+  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setError(false);
     try {
       setColorvalue(new Values(color).all(10));
     } catch {
-      console.log('wtf');
+      setError(true);
     }
   };
 
@@ -23,10 +24,11 @@ const ColorGen = () => {
   return (
     <StyledDiv>
       <section className='control-section'>
-        <h2>Color Generator</h2>
+        <h2>Color generator</h2>
         <form action='' onSubmit={handleSubmit}>
           <input
             type='text'
+            className={error && 'error'}
             placeholder='#333999'
             value={color}
             onChange={(e) => setColor(e.target.value)}
@@ -61,8 +63,9 @@ const SingleColor = ({ hex, weight }) => {
       onClick={handleCopy}
       style={{ backgroundColor: `#${hex}` }}
     >
-      <p>{weight}</p>
+      <p>{weight}%</p>
       <p>#{hex}</p>
+      {copied && <p>copied to clipboard</p>}
     </div>
   );
 };
