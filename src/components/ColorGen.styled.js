@@ -15,16 +15,26 @@ export const StyledDiv = styled.div`
     }
     form {
       display: flex;
-      input {
+      .color-input {
         padding: 0.3rem 0.3rem;
         font-size: 1.2rem;
         border: 1.6px solid grey;
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
-        max-width: 60%;
+        max-width: 50%;
       }
-      .error {
+      .color-error {
         border: 2px solid red;
+        font-size: 1.2rem;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        max-width: 50%;
+      }
+      .number-input {
+        max-width: 10%;
+        padding: 0.3rem 0.3rem;
+        border: 1.6px solid grey;
+        font-size: 1.2rem;
       }
       button {
         padding: 0.4rem 0.3rem;
