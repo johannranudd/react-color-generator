@@ -6,12 +6,14 @@ const ColorGen = () => {
   const [color, setColor] = useState('');
   const [colorValue, setColorvalue] = useState([]);
   const [error, setError] = useState(false);
+  const [shades, setShades] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setError(false);
+
     try {
-      setColorvalue(new Values(color).all(10));
+      setColorvalue(new Values(color).all(parseInt(shades)));
     } catch {
       setError(true);
     }
@@ -33,6 +35,14 @@ const ColorGen = () => {
             value={color}
             onChange={(e) => setColor(e.target.value)}
           />
+          {/* !test */}
+          <input
+            type='number'
+            placeholder='shades'
+            value={shades}
+            onChange={(e) => setShades(e.target.value)}
+          />
+          {/* !test */}
           <button type='submit'>Submit</button>
         </form>
       </section>
