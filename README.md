@@ -19,7 +19,8 @@ This is a personal project where I learned how to use React.js
 Clone the repo:
 
 ```bash
-git clone https://github.com/johannranudd/coffee-mug-store-next.js.git
+
+git clone https://github.com/johannranudd/react-color-generator.git
 
 npm install
 # or
